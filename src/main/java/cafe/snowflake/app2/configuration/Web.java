@@ -1,5 +1,6 @@
 package cafe.snowflake.app2.configuration;
 
+import cafe.snowflake.app2.auth.JwtConfigurer;
 import cafe.snowflake.app2.auth.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,7 +24,7 @@ public class Web {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-//            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 //            .securityMatchers(matchers -> matchers
 //                    .requestMatchers("/"))
             .httpBasic(Customizer.withDefaults())
@@ -33,8 +35,8 @@ public class Web {
 //            .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.disable())
 //            .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.disable())
 //            .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.disable())
-            .csrf(AbstractHttpConfigurer::disable);
-//            .securityContext(configurer -> new JwtConfigurer(jwtTokenProvider));
+            .csrf(AbstractHttpConfigurer::disable)
+            .securityContext(configurer -> new JwtConfigurer(jwtTokenProvider));
 //            .formLogin((form) -> form
 //                .loginPage("/login")
 //                .permitAll()
