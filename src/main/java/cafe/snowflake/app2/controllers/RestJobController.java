@@ -28,4 +28,13 @@ public class RestJobController {
             throw new RuntimeException(e);
         }
     }
+
+    @PostMapping("/rest/create/fulltime/app")
+    public String fulltimeJobApplication(@RequestBody AppData appData) {
+        try {
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jobApplicationService.createApplications(List.of(appData)));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
