@@ -1,6 +1,7 @@
 package cafe.snowflake.app2.controllers;
 
 import cafe.snowflake.app2.model.AppData;
+import cafe.snowflake.app2.model.AppDataFulltime;
 import cafe.snowflake.app2.service.JobApplicationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,9 +31,9 @@ public class RestJobController {
     }
 
     @PostMapping("/rest/create/fulltime/app")
-    public String fulltimeJobApplication(@RequestBody AppData appData) {
+    public String fulltimeJobApplication(@RequestBody AppDataFulltime appData) {
         try {
-            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jobApplicationService.createApplications(List.of(appData)));
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jobApplicationService.createFulltimeApplications(List.of(appData)));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
