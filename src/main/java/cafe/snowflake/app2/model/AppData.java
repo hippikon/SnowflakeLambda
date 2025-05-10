@@ -3,6 +3,7 @@ package cafe.snowflake.app2.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,8 @@ public class AppData {
     private String details;
     private String website;
     private boolean applied;
+    private Date created;
+    private Date updated;
 
     @Transient
     List<AppDetail> tagList;

@@ -1,11 +1,13 @@
 package cafe.snowflake.app2.controllers;
 
+import cafe.snowflake.app2.jpa.FulltimeJobApplicationDetail;
 import cafe.snowflake.app2.model.AppData;
 import cafe.snowflake.app2.model.AppDataFulltime;
 import cafe.snowflake.app2.service.JobApplicationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +19,9 @@ public class RestJobController {
 
     @Autowired
     private JobApplicationService jobApplicationService;
+
+    @Autowired
+    private FulltimeJobApplicationDetail fulltimeJobApplicationDetail;
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -34,6 +39,21 @@ public class RestJobController {
     public String fulltimeJobApplication(@RequestBody AppDataFulltime appData) {
         try {
             return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jobApplicationService.createFulltimeApplications(List.of(appData)));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/rest/fulltime/view")
+    public List<AppDataFulltime> viewFulltimeJobApplication() {
+        return fulltimeJobApplicationDetail.findAll();
+    }
+
+    @PostMapping("/rest/update/fulltime/applied")
+    public String fulltimeJobApplicationApplied(@RequestBody List<AppDataFulltime> applied) {
+        try {
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(
+                    jobApplicationService.updateFulltimeApplications(applied));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

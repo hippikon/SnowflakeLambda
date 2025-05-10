@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface FulltimeJobApplicationDetail extends JpaRepository<AppDataFulltime, Integer> {
     List<AppDataFulltime> findByName(String name);
+    List<AppDataFulltime> findByJobUrl(String jobUrl);
 
 }

@@ -11,6 +11,7 @@ import cafe.snowflake.app2.model.AppDetailFulltime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class JobApplicationService {
 
         List<AppData> savedOutput = new ArrayList<>();
         for (AppData application:jobApps) {
+            application.setCreated(new Date(System.currentTimeMillis()));
             AppData appDetail = jobAppRepository.save(application);
             List<AppDetail> appDetailList = createApplicationDetail(appDetail);
             appDetail.setTagList(appDetailList);
@@ -45,6 +47,7 @@ public class JobApplicationService {
         List<AppDetail> detail = new ArrayList<>();
         for (AppDetail data:jobApp.getTagList()) {
             data.setJobId(jobApp.getId());
+            data.setCreated(new Date(System.currentTimeMillis()));
             detail.add(jobDetailRepository.save(data));
         }
         return detail;
@@ -55,6 +58,7 @@ public class JobApplicationService {
 
         List<AppDataFulltime> savedOutput = new ArrayList<>();
         for (AppDataFulltime application:jobApps) {
+            application.setCreated(new Date(System.currentTimeMillis()));
             AppDataFulltime appDataFulltime = fulltimeJobAppRepository.save(application);
             List<AppDetailFulltime> appDetailList = createApplicationDetailFulltime(appDataFulltime);
             appDataFulltime.setTagList(appDetailList);
@@ -67,8 +71,22 @@ public class JobApplicationService {
         List<AppDetailFulltime> detail = new ArrayList<>();
         for (AppDetailFulltime data:jobApp.getTagList()) {
             data.setJobId(jobApp.getId());
+            data.setCreated(new Date(System.currentTimeMillis()));
             detail.add(fulltimeJobDetailRepository.save(data));
         }
         return detail;
+    }
+
+    public List<AppDataFulltime> updateFulltimeApplications(List<AppDataFulltime> appliedJobs) {
+
+        List<AppDataFulltime> savedOutput = new ArrayList<>();
+        for (AppDataFulltime applied:appliedJobs) {
+            AppDataFulltime input = fulltimeJobAppRepository.findByJobUrl(applied.getJobUrl()).get(0);
+            input.setApplied(applied.isApplied());
+            input.setUpdated(new Date(System.currentTimeMillis()));
+            AppDataFulltime appDataFulltime = fulltimeJobAppRepository.save(input);
+            savedOutput.add(appDataFulltime);
+        }
+        return savedOutput;
     }
 }
