@@ -82,8 +82,9 @@ public class JobApplicationService {
         List<AppDataFulltime> savedOutput = new ArrayList<>();
         for (AppDataFulltime applied:appliedJobs) {
             AppDataFulltime input = fulltimeJobAppRepository.findByJobUrl(applied.getJobUrl()).get(0);
-            input.setApplied(applied.isApplied());
+            input.setApplied(applied.getApplied());
             input.setUpdated(new Date(System.currentTimeMillis()));
+            input.setNotes(applied.getNotes());
             AppDataFulltime appDataFulltime = fulltimeJobAppRepository.save(input);
             savedOutput.add(appDataFulltime);
         }

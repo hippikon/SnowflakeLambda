@@ -17,9 +17,10 @@ public class AppData {
     private String jobUrl;
     private String details;
     private String website;
-    private boolean applied;
+    private int applied;
     private Date created;
     private Date updated;
+    private String notes;
 
     @Transient
     List<AppDetail> tagList;

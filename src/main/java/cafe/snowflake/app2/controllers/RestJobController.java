@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.DateFormat;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,8 @@ public class RestJobController {
     @PostMapping("/rest/create/job")
     public String rest(@RequestBody AppData appData) {
         try {
-            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jobApplicationService.createApplications(List.of(appData)));
+            return objectMapper.writerWithDefaultPrettyPrinter().with(DateFormat.getDateTimeInstance())
+                .writeValueAsString(jobApplicationService.createApplications(List.of(appData)));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -38,7 +40,8 @@ public class RestJobController {
     @PostMapping("/rest/create/fulltime/app")
     public String fulltimeJobApplication(@RequestBody AppDataFulltime appData) {
         try {
-            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jobApplicationService.createFulltimeApplications(List.of(appData)));
+            return objectMapper.writerWithDefaultPrettyPrinter().with(DateFormat.getDateTimeInstance())
+                .writeValueAsString(jobApplicationService.createFulltimeApplications(List.of(appData)));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -52,8 +55,8 @@ public class RestJobController {
     @PostMapping("/rest/update/fulltime/applied")
     public String fulltimeJobApplicationApplied(@RequestBody List<AppDataFulltime> applied) {
         try {
-            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(
-                    jobApplicationService.updateFulltimeApplications(applied));
+            return objectMapper.writerWithDefaultPrettyPrinter().with(DateFormat.getDateTimeInstance())
+                .writeValueAsString(jobApplicationService.updateFulltimeApplications(applied));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
