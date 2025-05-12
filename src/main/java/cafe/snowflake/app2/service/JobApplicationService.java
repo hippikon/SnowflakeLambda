@@ -84,7 +84,13 @@ public class JobApplicationService {
             AppDataFulltime input = fulltimeJobAppRepository.findByJobUrl(applied.getJobUrl()).get(0);
             input.setApplied(applied.getApplied());
             input.setUpdated(new Date(System.currentTimeMillis()));
-            input.setNotes(applied.getNotes());
+            String currentNotes = input.getNotes() == null ? "" : input.getNotes();
+            String newNotes = "\n"
+                + applied.getNotes()
+                + " - "
+                + new Date(System.currentTimeMillis());
+
+            input.setNotes(currentNotes + newNotes);
             AppDataFulltime appDataFulltime = fulltimeJobAppRepository.save(input);
             savedOutput.add(appDataFulltime);
         }

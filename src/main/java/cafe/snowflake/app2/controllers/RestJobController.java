@@ -1,6 +1,7 @@
 package cafe.snowflake.app2.controllers;
 
 import cafe.snowflake.app2.jpa.FulltimeJobApplicationDetail;
+import cafe.snowflake.app2.jpa.JobApplicationDetail;
 import cafe.snowflake.app2.model.AppData;
 import cafe.snowflake.app2.model.AppDataFulltime;
 import cafe.snowflake.app2.service.JobApplicationService;
@@ -23,6 +24,9 @@ public class RestJobController {
 
     @Autowired
     private FulltimeJobApplicationDetail fulltimeJobApplicationDetail;
+
+    @Autowired
+    private JobApplicationDetail jobApplicationDetail;
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -50,6 +54,11 @@ public class RestJobController {
     @GetMapping("/rest/fulltime/view")
     public List<AppDataFulltime> viewFulltimeJobApplication() {
         return fulltimeJobApplicationDetail.findAll();
+    }
+
+    @GetMapping("/rest/contract/view")
+    public List<AppData> viewContractJobApplications() {
+        return jobApplicationDetail.findAll();
     }
 
     @PostMapping("/rest/update/fulltime/applied")
