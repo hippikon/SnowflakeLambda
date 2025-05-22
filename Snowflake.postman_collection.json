@@ -1,0 +1,693 @@
+{
+	"info": {
+		"_postman_id": "ff07646c-6881-44d4-aad7-09387e8b430c",
+		"name": "Snowflake",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2470526",
+		"_collection_link": "https://warped-trinity-994071.postman.co/workspace/Free-APIs~d0000ed4-c915-4a08-a7eb-c5aacae5dc98/collection/2470526-ff07646c-6881-44d4-aad7-09387e8b430c?action=share&source=collection_link&creator=2470526"
+	},
+	"item": [
+		{
+			"name": "Hello World Parameterized",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{site}}/greetings",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"greetings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hello World",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.pensieve.digital/greetings",
+					"protocol": "https",
+					"host": [
+						"api",
+						"pensieve",
+						"digital"
+					],
+					"path": [
+						"greetings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Record",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"device\":\"tablet\",\n    \"deviceName\": \"Samsung S7+\",\n    \"username\": \"garagetinkerer\",\n    \"notes\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{site}}/add/record",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"add",
+						"record"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Record With Put",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 6,\n    \"device\":\"tablet\",\n    \"deviceName\": \"Samsung S7+1\",\n    \"username\": \"garagetinkerer\",\n    \"notes\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{site}}/put/record",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"put",
+						"record"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Record With Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/add/record2?id=5&device=tablet&deviceName=Samsung S10+&username=abcd123",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"add",
+						"record2"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						},
+						{
+							"key": "device",
+							"value": "tablet"
+						},
+						{
+							"key": "deviceName",
+							"value": "Samsung S10+"
+						},
+						{
+							"key": "username",
+							"value": "abcd123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text"
+					},
+					{
+						"key": "x-amz-apigw-id",
+						"value": "MgiOfEdmIAMEupQ=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{site}}/ping",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hello 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text"
+					},
+					{
+						"key": "x-amz-apigw-id",
+						"value": "MgiOfEdmIAMEupQ=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "_csrf",
+							"value": "{{xsrf}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{site}}/hello2?_csrf={{xsrf}}",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"hello2"
+					],
+					"query": [
+						{
+							"key": "_csrf",
+							"value": "{{xsrf}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hello",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text"
+					},
+					{
+						"key": "x-amz-apigw-id",
+						"value": "MgiOfEdmIAMEupQ=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{site}}/hello",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Csrf Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{site}}/csrf",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"csrf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Csrf Token - Direct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api.direct}}/csrf",
+					"host": [
+						"{{api.direct}}"
+					],
+					"path": [
+						"csrf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hello World - Direct",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api.direct}}/hello",
+					"host": [
+						"{{api.direct}}"
+					],
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Records",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{site}}/list",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Prod",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create Job Application",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Lead Full Stack Developer\",\n    \"company\": \"ENTERPRISE MINDS INC\",\n    \"website\": \"ZipRecruiter\",\n    \"jobUrl\": \"https://www.ziprecruiter.com/job/2cffa929\",\n    \"details\": \"We are looking for min 10+ years as an Lead JavaScript Developer (Lead Full Stack Developer) with strong experience in Node.js, JavaScript, React.js/Angular, MongoDB, Docker and Microservices Architecture.\\n\\nMode of Interview: In -person\\nOnsite from Day-1.\\nVery good knowledge of cloud platforms like AWS, Azure\\nExcellent Communication Skills.\",\n    \"applied\": 1,\n    \"tagList\": [\n        {\n            \"tagName\": \"years\",\n            \"tagValue\": \"10+\"\n        },\n        {\n            \"tagName\": \"location\",\n            \"tagValue\": \"Oak Brook, IL\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/create/job",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"create",
+						"job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Fulltime Job Application",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Lead Software Engineer - Java, Markets Technology\",\n    \"company\": \"JP Morgan Chase\",\n    \"website\": \"Glassdoor\",\n    \"jobUrl\": \"https://www.glassdoor.com/job-listing/lead-software-engineer-java-markets-technology-jpmorganchase-JV_IC1128808_KO0,46_KE47,60.htm?jl=1009737344751&utm_source=jobalert&utm_medium=email&utm_term=jac2jvar&utm_content=ja-jobpos8-1009737344751&utm_campaign=jobAlertAlert&tgt=GD_JOB_VIEW&src=GD_JOB_AD&uido=C94171280F9FFB8977E8D728E5BF7109&ao=1136043&jrtk=5-yul1-0-1iqr5urj7kuqv800-92ea17e10b6494de&cs=1_b6984518&s=224&t=JA&pos=108&ja=349124991&guid=00000196b65547df90278d4428e4f7a4&jobListingId=1009737344751&vt=e&cb=1746816430057&ctt=1746820155580&srs=EMAIL_JOB_ALERT\",\n    \"details\": \"Required qualifications, capabilities, and skills\\n\\nFormal training or certification on software engineering concepts and 5+ years applied experience in Java\\nExperience with AWS or other clouds such as Azure or Google Cloud\\nVery Strong problem solving, analytical and communication skills (both verbal and written)\\nExpert level knowledge of core Java (at least 1.8) with clear understanding of advanced concepts in collection framework, garbage collection, multi threading\\nExperience working with Maven, Jenkins, Git/Subversion\\nExperience working with related technical frameworks – Spring, JMS, JDBC, Hibernate/JPA\\nSolid understanding of database concepts and working knowledge with any of the vendors (Preferably Oracle) with at least some exposure to performance tuning\\nAbility to take on difficult and complex large scale problems and provide end to end solutions\\nAbility to build and maintain strong relationships with stakeholders in business, operations, operate\\nSome experience of providing production support in a Level2/Level3 capacity\\nPreferred qualifications, capabilities, and skills\\nExperience of working in an Investment Banking context in particular in a Futures & Options department\\nUnderstanding of the trade lifecycle and back-office functions: clearing, margining, settlements, collateral, interest, accounting and cash management\\nExperience of working in an agile environment\\nExperience with FIX protocol\\nExperience with doing heap analysis, profiling etc\",\n    \"applied\": 0,\n    \"tagList\": [\n        {\n            \"tagName\": \"pay\",\n            \"tagValue\": \" $133K - $185K \"\n        },\n        {\n            \"tagName\": \"location\",\n            \"tagValue\": \"Chicago, IL\"\n        }\n    ],\n    \"type\": \"fulltime\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/create/fulltime/app",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"create",
+						"fulltime",
+						"app"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Fulltime Job Application",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {   \"jobUrl\": \"https://www.glassdoor.com/job-listing/software-engineer-1-new-relic-JV_IC1128808_KO0,19_KE20,29.htm?jl=1009736481809&utm_source=jobalert&utm_medium=email&utm_term=jac2jvar&utm_content=ja-jobpos1-1009736481809&utm_campaign=jobAlertAlert&tgt=GD_JOB_VIEW&src=GD_JOB_AD&uido=C94171280F9FFB8977E8D728E5BF7109&ao=1136043&jrtk=5-yul1-0-1iqr5urj7kuqv800-64a4c221cafb43d3&cs=1_31db9f2d&s=224&t=JA&pos=101&ja=349124991&guid=00000196b65547df90278d4428e4f7a4&jobListingId=1009736481809&vt=e&cb=1746816430056&ctt=1746820709286&srs=EMAIL_JOB_ALERT\",\n        \"applied\": -1,\n        \"notes\": \"Job no longer active\"\n    },\n    {   \"jobUrl\": \"https://www.glassdoor.com/job-listing/senior-java-developer-publicis-sapient-JV_IC1128808_KO0,21_KE22,38.htm?jl=1009737641634&utm_source=jobalert&utm_medium=email&utm_term=jac2jvar&utm_content=ja-jobpos2-1009737641634&utm_campaign=jobAlertAlert&tgt=GD_JOB_VIEW&src=GD_JOB_AD&uido=C94171280F9FFB8977E8D728E5BF7109&ao=1136043&jrtk=5-yul1-0-1iqr5urj7kuqv800-3bdc114f33c9da37&cs=1_476521ec&s=224&t=JA&pos=102&ja=349124991&guid=00000196b65547df90278d4428e4f7a4&jobListingId=1009737641634&vt=e&cb=1746816430056&ctt=1746820135939&srs=EMAIL_JOB_ALERT\",\n        \"applied\": 0\n    },\n    {   \"jobUrl\": \"https://www.glassdoor.com/job-listing/lead-software-engineer-java-markets-technology-jpmorganchase-JV_IC1128808_KO0,46_KE47,60.htm?jl=1009737344751&utm_source=jobalert&utm_medium=email&utm_term=jac2jvar&utm_content=ja-jobpos8-1009737344751&utm_campaign=jobAlertAlert&tgt=GD_JOB_VIEW&src=GD_JOB_AD&uido=C94171280F9FFB8977E8D728E5BF7109&ao=1136043&jrtk=5-yul1-0-1iqr5urj7kuqv800-92ea17e10b6494de&cs=1_b6984518&s=224&t=JA&pos=108&ja=349124991&guid=00000196b65547df90278d4428e4f7a4&jobListingId=1009737344751&vt=e&cb=1746816430057&ctt=1746820155580&srs=EMAIL_JOB_ALERT\",\n        \"applied\": 0\n    }\n]    \n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/update/fulltime/applied",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"update",
+						"fulltime",
+						"applied"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Fulltime Job Applications",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rest/fulltime/view",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"fulltime",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AWS VFJA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rest/fulltime/view",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"fulltime",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Contract Job Applications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/contract/view",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"contract",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Oidc User",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Lead Software Engineer - Java, Markets Technology\",\n    \"company\": \"JP Morgan Chase\",\n    \"website\": \"Glassdoor\",\n    \"jobUrl\": \"https://www.glassdoor.com/job-listing/lead-software-engineer-java-markets-technology-jpmorganchase-JV_IC1128808_KO0,46_KE47,60.htm?jl=1009737344751&utm_source=jobalert&utm_medium=email&utm_term=jac2jvar&utm_content=ja-jobpos8-1009737344751&utm_campaign=jobAlertAlert&tgt=GD_JOB_VIEW&src=GD_JOB_AD&uido=C94171280F9FFB8977E8D728E5BF7109&ao=1136043&jrtk=5-yul1-0-1iqr5urj7kuqv800-92ea17e10b6494de&cs=1_b6984518&s=224&t=JA&pos=108&ja=349124991&guid=00000196b65547df90278d4428e4f7a4&jobListingId=1009737344751&vt=e&cb=1746816430057&ctt=1746820155580&srs=EMAIL_JOB_ALERT\",\n    \"details\": \"Required qualifications, capabilities, and skills\\n\\nFormal training or certification on software engineering concepts and 5+ years applied experience in Java\\nExperience with AWS or other clouds such as Azure or Google Cloud\\nVery Strong problem solving, analytical and communication skills (both verbal and written)\\nExpert level knowledge of core Java (at least 1.8) with clear understanding of advanced concepts in collection framework, garbage collection, multi threading\\nExperience working with Maven, Jenkins, Git/Subversion\\nExperience working with related technical frameworks – Spring, JMS, JDBC, Hibernate/JPA\\nSolid understanding of database concepts and working knowledge with any of the vendors (Preferably Oracle) with at least some exposure to performance tuning\\nAbility to take on difficult and complex large scale problems and provide end to end solutions\\nAbility to build and maintain strong relationships with stakeholders in business, operations, operate\\nSome experience of providing production support in a Level2/Level3 capacity\\nPreferred qualifications, capabilities, and skills\\nExperience of working in an Investment Banking context in particular in a Futures & Options department\\nUnderstanding of the trade lifecycle and back-office functions: clearing, margining, settlements, collateral, interest, accounting and cash management\\nExperience of working in an agile environment\\nExperience with FIX protocol\\nExperience with doing heap analysis, profiling etc\",\n    \"applied\": 0,\n    \"tagList\": [\n        {\n            \"tagName\": \"pay\",\n            \"tagValue\": \" $133K - $185K \"\n        },\n        {\n            \"tagName\": \"location\",\n            \"tagValue\": \"Chicago, IL\"\n        }\n    ],\n    \"type\": \"fulltime\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/create/fulltime/app",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"create",
+						"fulltime",
+						"app"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "tiger",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "user",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "xsrf",
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}

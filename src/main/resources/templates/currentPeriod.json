@@ -1,0 +1,34 @@
+{
+  "contacts": [
+    {
+      "name": "Mithun Prabhakar",
+      "notes": "Opportunity with Publicis Sapient starting 3/6/25",
+      "phone": "6097791479",
+      "dateUpdated": "3/8/2025",
+      "email": "mprabhakar@compunnel.com",
+      "role": "Team Lead - Account Manager",
+      "company": "Compunnel",
+      "linkedin": "/"
+    },
+    {
+      "name": "Naveen Reddy",
+      "notes": "Opportunity Resubmit for Northern Trust role - 3/6/25 - Responded on phone",
+      "phone": "609-606-9010 ext. 2934, 609-606-9015",
+      "dateUpdated": "3/8/2025",
+      "email": "naveen.reddy@compunnel.com",
+      "role": "Senior Account Manager",
+      "company": "Compunnel Software Group, Plainsboro, NJ",
+      "linkedin": "LinkedIn"
+    },
+    {
+      "name": "Kamal Joshi",
+      "notes": "",
+      "phone": "609-606-9010 ext. 2780,  253-269-7463",
+      "dateUpdated": "3/8/2025",
+      "email": "kjoshi@compunnel.com",
+      "role": "Delivery Manager",
+      "company": "Compunnel Software Group, Plainsboro, NJ",
+      "linkedin": "LinkedIn"
+    }
+  ]
+}
